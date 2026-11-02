@@ -1,0 +1,126 @@
+/* Welcome infographic. HC brand: blue family, organic blooms/lines, Archivo + Open Sans. Units are cqw of the stage width. */
+.ig-layouts { border: 0; padding: 0; margin: 12px 0 16px; display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
+.ig-layouts .label { margin: 0; }
+.ig-radio { cursor: pointer; }
+.ig-wrap { margin: 0 auto 16px; width: 100%; }
+.ig-portrait { max-width: 560px; }
+.ig-landscape { max-width: 840px; }
+
+/* Design picker: live thumbnails */
+.ig-picker { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 0 0 20px; }
+.ig-choice {
+  font: inherit; text-align: left; background: #fff; border: 2px solid var(--input-border); border-radius: 10px;
+  padding: 8px; cursor: pointer; color: var(--text);
+}
+.ig-choice[aria-pressed='true'] { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary); }
+.ig-choice .ig-wrap { margin: 0 0 6px; pointer-events: none; }
+.ig-choice-label { display: block; font-weight: 600; font-size: 0.9rem; }
+.ig-choice-note { display: block; font-size: 0.78rem; color: var(--muted); }
+@media (max-width: 520px) { .ig-choice-note { display: none; } .ig-picker { gap: 6px; } .ig-choice { padding: 5px; } }
+
+.ig-stage { container-type: inline-size; position: relative; overflow: hidden; width: 100%; border-radius: var(--radius); }
+.ig-portrait .ig-stage { aspect-ratio: 4 / 5; }
+.ig-landscape .ig-stage { aspect-ratio: 3 / 2; }
+.ig-stage > * { position: absolute; }
+.ig-deco { inset: 0; }
+.ig-band { display: none; }
+.ig-bloom { position: absolute; height: auto; pointer-events: none; }
+.ig-logo { height: auto; }
+.ig-line { height: auto; }
+
+.ig-photo { overflow: hidden; border-radius: 1.6cqw; box-shadow: 0 0 0 0.7cqw #fff; background: var(--hc-neutral-300); }
+.ig-photo img { position: absolute; max-width: none; display: block; user-select: none; }
+.ig-photo-edit { cursor: grab; touch-action: none; }
+.ig-photo-edit:active { cursor: grabbing; }
+.ig-title { display: flex; flex-direction: column; overflow: hidden; }
+.ig-kicker { font-family: var(--font-display); font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; margin: 0 0 0.6em; font-size: calc(var(--nfit, 1) * var(--ig-kick)); }
+.ig-name {
+  font-weight: 800; line-height: 1.1; margin: 0; overflow-wrap: anywhere;
+  font-size: calc(var(--nfit, 1) * var(--tier, 1) * var(--ig-name));
+}
+.ig-body { font-size: calc(var(--fit, 1) * var(--ig-body)); line-height: 1.5; overflow: hidden; min-height: 0; }
+.ig-body p { margin: 0 0 0.8em; }
+.ig-body p:last-child { margin-bottom: 0; }
+/* Personal interests are set apart from the professional background */
+.ig-body p.ig-personal { margin-top: 1em; padding-top: 0.8em; border-top: 0.25em solid var(--accent); font-weight: 600; }
+.ig-name::after { content: ''; display: block; width: 0.9em; height: 0.09em; margin-top: 0.25em; background: var(--accent); }
+.ig-d-spotlight, .ig-d-split { --accent: var(--hc-blue-300); }
+.ig-d-journey { --accent: var(--hc-blue-500); }
+.ig-portrait .ig-d-spotlight .ig-name::after { margin-inline: auto; }
+
+/* ---------- Design 1: Spotlight (dark base, centred hero photo, large bloom) ---------- */
+.ig-d-spotlight { background: var(--hc-blue-900); color: #fff; }
+.ig-d-spotlight .ig-kicker { color: var(--hc-blue-100); }
+.ig-portrait .ig-d-spotlight .ig-bloom { width: 92cqw; left: -26cqw; top: 22cqw; }
+.ig-portrait .ig-d-spotlight .ig-logo { left: 6cqw; top: 6cqw; width: 24cqw; }
+.ig-portrait .ig-d-spotlight .ig-photo { left: 31cqw; width: 38cqw; top: 15cqw; height: 46cqw; }
+.ig-portrait .ig-d-spotlight .ig-title { left: 6cqw; right: 6cqw; top: 64cqw; height: 17cqw; text-align: center; justify-content: center; --ig-name: 8.2cqw; --ig-kick: 3cqw; }
+.ig-portrait .ig-d-spotlight .ig-body { left: 9cqw; right: 9cqw; top: 83cqw; bottom: 6cqw; --ig-body: 3.1cqw; }
+.ig-landscape .ig-d-spotlight .ig-bloom { width: 52cqw; left: -14cqw; bottom: -18cqw; }
+.ig-landscape .ig-d-spotlight .ig-logo { left: 5cqw; top: 5cqw; width: 18cqw; }
+.ig-landscape .ig-d-spotlight .ig-photo { left: 5cqw; top: 14cqw; width: 34cqw; height: 47cqw; }
+.ig-landscape .ig-d-spotlight .ig-title { left: 44cqw; right: 5cqw; top: 13cqw; height: 16cqw; justify-content: center; --ig-name: 5cqw; --ig-kick: 1.8cqw; }
+.ig-landscape .ig-d-spotlight .ig-body { left: 44cqw; right: 6cqw; top: 31cqw; bottom: 6cqw; --ig-body: 2.2cqw; }
+
+/* ---------- Design 2: Split (vibrant blue panel + white reading area) ---------- */
+.ig-d-split { background: #fff; color: var(--hc-neutral-900); }
+.ig-d-split .ig-band { display: block; position: absolute; background: var(--hc-blue-500); }
+.ig-d-split .ig-title { color: #fff; justify-content: center; }
+.ig-d-split .ig-kicker { color: var(--hc-blue-100); }
+.ig-d-split .ig-body { border-left: 0.9cqw solid var(--hc-blue-500); padding-left: 2.4cqw; }
+.ig-d-split .ig-body p.ig-personal { --accent: var(--hc-blue-500); }
+.ig-portrait .ig-d-split .ig-deco { clip-path: inset(0 0 69cqw 0); }
+.ig-portrait .ig-d-split .ig-band { inset: 0; }
+.ig-portrait .ig-d-split .ig-bloom { width: 46cqw; right: -10cqw; top: -12cqw; }
+.ig-portrait .ig-d-split .ig-title { left: 6cqw; top: 9cqw; width: 48cqw; height: 40cqw; --ig-name: 8cqw; --ig-kick: 3cqw; }
+.ig-portrait .ig-d-split .ig-photo { left: 56cqw; right: 6cqw; top: 11cqw; height: 55cqw; align-items: flex-start; justify-content: flex-end; }
+.ig-portrait .ig-d-split .ig-body { left: 6cqw; right: 6cqw; top: 71cqw; bottom: 17cqw; --ig-body: 3.1cqw; }
+.ig-portrait .ig-d-split .ig-logo { left: 6cqw; bottom: 5cqw; width: 26cqw; }
+.ig-landscape .ig-d-split .ig-deco { clip-path: inset(0 62cqw 0 0); }
+.ig-landscape .ig-d-split .ig-band { inset: 0; }
+.ig-landscape .ig-d-split .ig-bloom { width: 30cqw; left: -8cqw; bottom: -14cqw; }
+.ig-landscape .ig-d-split .ig-photo { left: 5cqw; top: 6cqw; width: 28cqw; height: 33cqw; justify-content: flex-start; align-items: flex-start; }
+.ig-landscape .ig-d-split .ig-title { left: 5cqw; top: 41cqw; width: 29cqw; height: 12cqw; --ig-name: 3.8cqw; --ig-kick: 1.6cqw; }
+.ig-landscape .ig-d-split .ig-body { left: 44cqw; right: 6cqw; top: 7cqw; bottom: 15cqw; --ig-body: 2.2cqw; }
+.ig-landscape .ig-d-split .ig-logo { right: 5cqw; bottom: 5cqw; width: 20cqw; }
+
+/* ---------- Design 3: Journey (light base, connecting line as a timeline spine) ---------- */
+.ig-d-journey { background: var(--hc-neutral-100); color: var(--hc-neutral-900); }
+.ig-d-journey .ig-name { color: var(--hc-blue-700); }
+.ig-d-journey .ig-kicker { color: var(--hc-blue-500); }
+.ig-d-journey .ig-body { background: #fff; border-radius: 2cqw; padding: 2.6cqw 3cqw; }
+.ig-spine { background: var(--hc-blue-900); border-radius: 6.5cqw; width: 13cqw; }
+.ig-d-journey .ig-photo { box-shadow: 0 0 0 0.7cqw var(--hc-blue-500); }
+.ig-portrait .ig-d-journey .ig-bloom { width: 30cqw; right: -9cqw; top: -9cqw; }
+.ig-portrait .ig-d-journey .ig-logo { left: 6cqw; top: 6cqw; width: 24cqw; }
+.ig-portrait .ig-d-journey .ig-photo { left: 6cqw; top: 16cqw; width: 38cqw; height: 38cqw; justify-content: flex-start; }
+.ig-portrait .ig-d-journey .ig-title { left: 48cqw; right: 6cqw; top: 16cqw; height: 38cqw; justify-content: center; --ig-name: 8cqw; --ig-kick: 3cqw; }
+.ig-portrait .ig-d-journey .ig-spine { left: 4.5cqw; top: 58.5cqw; height: 57cqw; }
+.ig-portrait .ig-d-journey .ig-line { left: 6.05cqw; top: 60cqw; height: 54cqw; }
+.ig-portrait .ig-d-journey .ig-body { left: 19cqw; right: 7cqw; top: 60cqw; bottom: 11cqw; --ig-body: 3.1cqw; }
+.ig-landscape .ig-d-journey .ig-bloom { width: 16cqw; right: -5cqw; bottom: -5cqw; }
+.ig-landscape .ig-d-journey .ig-logo { left: 5cqw; top: 5cqw; width: 18cqw; }
+.ig-landscape .ig-d-journey .ig-photo { left: 5cqw; top: 13cqw; width: 28cqw; height: 33cqw; justify-content: flex-start; }
+.ig-landscape .ig-d-journey .ig-title { left: 5cqw; top: 49cqw; width: 29cqw; height: 12cqw; --ig-name: 3.6cqw; --ig-kick: 1.6cqw; }
+.ig-landscape .ig-d-journey .ig-spine { left: 34.5cqw; top: 4.5cqw; height: 57cqw; }
+.ig-landscape .ig-d-journey .ig-line { left: 36.05cqw; top: 6cqw; height: 54cqw; }
+.ig-landscape .ig-d-journey .ig-body { left: 49.5cqw; right: 11cqw; top: 8cqw; bottom: 8cqw; --ig-body: 2.1cqw; }
+
+/* Photo adjustment controls */
+.ig-adjust { border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px 16px; margin: 0 0 16px; }
+.ig-adjust legend { font-weight: 600; padding: 0 6px; }
+.ig-adjust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px 24px; align-items: end; }
+.ig-adjust label { display: block; font-size: 0.88rem; }
+.ig-adjust input[type='range'] { width: 100%; min-height: 32px; accent-color: var(--primary); }
+
+/* Final review + export */
+.review-list { display: grid; gap: 10px; margin: 0 0 20px; }
+.review-list > div { display: grid; grid-template-columns: 120px 1fr; gap: 12px; }
+.review-list dt { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+.review-list dd { margin: 0; }
+.review-intro { white-space: pre-wrap; }
+@media (max-width: 520px) { .review-list > div { grid-template-columns: 1fr; gap: 2px; } }
+/* Off-screen, full reference size, no rounded corners: this is what gets rasterised. */
+.ig-export { position: fixed; left: -20000px; top: 0; pointer-events: none; }
+.ig-export .ig-wrap { max-width: none; margin: 0; }
+.ig-export .ig-stage { border-radius: 0; }
